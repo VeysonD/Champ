@@ -23,10 +23,12 @@
 
   <div class="field">
     <%= form.label :published %>
-    <%= form.check_box :published, id: :post_published %>
+    <%= form.check_box :published, id: :post_published, class: "form-checkbox form-icon"%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <div class="col-4">
+      <%= form.submit class: "btn"%>
+    </div>
   </div>
 <% end %>
