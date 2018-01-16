@@ -26,3 +26,6 @@
 
 # Ignore vendor/cache
 /vendor/cache
+/public/packs
+/public/packs-test
+/node_modules
