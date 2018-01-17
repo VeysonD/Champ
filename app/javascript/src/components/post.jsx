@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class Post extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      allPosts: [],
-    };
-  }
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          Router works!
-        </div>
-      </BrowserRouter>
+      <div>
+        <h1>
+        Champ3
+        </h1>
+        <header class="navbar bg-gray">
+          <section class="navbar-section navbar-brand mr-2">Post History</section>
+          <section class="navbar-section">
+            <div class="input-group input-inline">
+              <div>
+                Write new post here
+              </div>
+            </div>
+          </section>
+        </header>
+      </div>
     )
   }
 }
