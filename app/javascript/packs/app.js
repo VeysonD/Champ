@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios'
 
 import Post from '../src/components/Post';
 import NewPost from '../src/components/NewPost';
@@ -15,15 +16,35 @@ export default class App extends Component {
       allPosts: [],
     };
   }
+  componentWillMount() {
+
+  }
 
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/posts" component={ Post } />
-          <Route exact path="/new" component={ NewPost } />
-          <Route exact path="/edit" component={ EditPost } />
-        </Switch>
+        <div>
+          <h1>
+          Champ40
+          </h1>
+          <header class="navbar bg-gray">
+            <section class="navbar-section navbar-brand mr-2">Post History</section>
+            <section class="navbar-section">
+              <div class="input-group input-inline">
+                <div>
+                  Write new post here
+                </div>
+              </div>
+            </section>
+          </header>
+
+          <Switch>
+            <Route path="/posts/:id" component={ Post } />
+            <Route path="/posts/new" component={ NewPost } />
+            <Route path="/posts/:id/edit" component={ EditPost } />
+          </Switch>
+        </div>
+
       </BrowserRouter>
     )
   }
