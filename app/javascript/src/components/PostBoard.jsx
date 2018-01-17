@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import {
   Table,
   TableBody,
@@ -20,18 +22,35 @@ class PostBoard extends Component {
     super(props);
     this.state = {
       allPosts: null,
+      open: false,
     };
+    this.closeConfirmationBox = this.closeConfirmationBox.bind(this);
   }
   componentWillMount() {
     axios.get('/api/posts').then(posts => {
-      console.log('What are the posts 1:', posts);
       this.setState({ allPosts: posts.data })
-      console.log('what is the state 1:', this.state);
     })
     .catch(error => console.error(error));
-    console.log('what is the state 2:', this.state);
   }
+  openConfirmationBox(id) {
+   console.log('Open Confirmationbox post id:', id);
+    this.setState({ open: true });
+  }
+  closeConfirmationBox() {
+    this.setState ({ open: false });
+  }
+
+  destroyPost(id) {
+    console.log('Destroying post id:', id);
+    // axios.delete(`/api/posts/${id}`)
+
+  }
+
   render() {
+    const actions = [
+      <FlatButton label="Sure thing!" primary onClick={this.closeConfirmationBox} />,
+      <FlatButton label="Cancel" primary onClick={this.closeConfirmationBox} />
+    ];
     return (
       <MuiThemeProvider>
         <Paper style={{ width: '95%', margin: 'auto', marginTop: 12, padding: 12 }}>
@@ -64,13 +83,32 @@ class PostBoard extends Component {
                       <TableRowColumn>{post.body}</TableRowColumn>
                       { post.published
                         ?
-                        <TableRowColumn>T</TableRowColumn>
+                        <TableRowColumn>True</TableRowColumn>
                         :
-                        <TableRowColumn>F</TableRowColumn>
+                        <TableRowColumn>False</TableRowColumn>
                       }
-                      <TableHeaderColumn>Show</TableHeaderColumn>
-                      <TableHeaderColumn>Edit</TableHeaderColumn>
-                      <TableHeaderColumn>Delete</TableHeaderColumn>
+                      <TableRowColumn>
+                        <RaisedButton
+                          secondary
+                          label="Show"
+                          href={`/posts/${post.id}`}
+                        />
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        <RaisedButton
+                          secondary
+                          label="Edit"
+                          href={`/posts/${post.id}/edit`}
+                        />
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        <RaisedButton
+                          secondary
+                          label="Delete"
+                          onClick={() => this.openConfirmationBox(post.id)}
+                        />
+                      </TableRowColumn>
+
                     </TableRow>
                   ))}
                 </TableBody>
@@ -80,6 +118,13 @@ class PostBoard extends Component {
               }
             </Table>
           </Card>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.closeConfirmationBox}
+          >Are you sure you want to delete this post?
+          </Dialog>
           <RaisedButton
             primary
             label="Write a new post"
