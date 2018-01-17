@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 import PostBoard from '../src/components/PostBoard';
 import Post from '../src/components/Post';
@@ -28,20 +28,6 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <h1>
-          Champ
-          </h1>
-          <header class="navbar bg-gray">
-            <section class="navbar-section navbar-brand mr-2">Post History</section>
-            <section class="navbar-section">
-              <div class="input-group input-inline">
-                <Link to="/posts/new">
-                  Write new post here
-                </Link>
-              </div>
-            </section>
-          </header>
-
           <Switch>
             <Route exact path="/" component= { PostBoard } />
             <Route path="/posts/new" component={ NewPost } />
