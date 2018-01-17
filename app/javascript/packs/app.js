@@ -5,7 +5,6 @@ import {
   Route
 } from 'react-router-dom';
 
-// import Hello from '../src/components/hello_react'; // testing hello_react
 import Post from '../src/components/post';
 
 export default class Root extends React.Component {
@@ -13,7 +12,6 @@ export default class Root extends React.Component {
     return (
       <Router>
         <div>
-        RENDER MEEEEEEEEEEEE
           <Route path='/' component={Post}/>
         </div>
       </Router>
