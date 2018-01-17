@@ -23,6 +23,7 @@ class PostBoard extends Component {
     this.state = {
       allPosts: null,
       open: false,
+      currentPost: null,
     };
     this.closeConfirmationBox = this.closeConfirmationBox.bind(this);
   }
@@ -33,22 +34,45 @@ class PostBoard extends Component {
     .catch(error => console.error(error));
   }
   openConfirmationBox(id) {
-   console.log('Open Confirmationbox post id:', id);
-    this.setState({ open: true });
+   console.log('Open Confirmationbox post id:', this.state);
+    this.setState({
+      open: true,
+      currentPost: id
+    });
   }
   closeConfirmationBox() {
-    this.setState ({ open: false });
+    this.setState ({
+      open: false,
+      currentPost: null
+    });
   }
 
-  destroyPost(id) {
-    console.log('Destroying post id:', id);
-    // axios.delete(`/api/posts/${id}`)
+  destroyPost() {
+    console.log('Destroying post id:', this.state.currentPost);
 
+    axios.delete(`/api/posts/${this.state.currentPost}`)
+      .then(post => {
+        axios.get('/api/posts').then(posts => {
+          this.setState({
+            allPosts: posts.data,
+            open: false,
+            currentPost: null
+          });
+        })
+        .catch(error => console.error(error));
+      })
+      .catch(err => {
+        this.setState({
+          open: false,
+          currentPost: null
+        });
+        console.error(err);
+      });
   }
 
   render() {
     const actions = [
-      <FlatButton label="Sure thing!" primary onClick={this.closeConfirmationBox} />,
+      <FlatButton label="Sure thing!" primary onClick={() => this.destroyPost()} />,
       <FlatButton label="Cancel" primary onClick={this.closeConfirmationBox} />
     ];
     return (
@@ -108,7 +132,6 @@ class PostBoard extends Component {
                           onClick={() => this.openConfirmationBox(post.id)}
                         />
                       </TableRowColumn>
-
                     </TableRow>
                   ))}
                 </TableBody>
