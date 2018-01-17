@@ -17,7 +17,11 @@ export default class App extends Component {
     };
   }
   componentWillMount() {
-
+    axios
+      .get('/posts')
+      .then(posts => this.state.allPosts = posts)
+      .catch(error => console.error(error));
+    console.log('what is the state:', this.state);
   }
 
   render() {
