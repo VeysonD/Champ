@@ -1,11 +1,12 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import Hello from '../src/components/hello_react'
+// import Hello from '../src/components/hello_react'; // testing hello_react
+import Post from '../src/components/post';
 
 export default class Root extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class Root extends React.Component {
       <Router>
         <div>
         RENDER MEEEEEEEEEEEE
-          <Route path='/' component={Hello}/>
+          <Route path='/' component={Post}/>
         </div>
       </Router>
     )
