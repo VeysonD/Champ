@@ -4,10 +4,10 @@ class Post extends Component {
   render() {
     return (
       <div>
-        Post component
+        This is the Post component
       </div>
     )
   }
-}
+};
 
 export default Post;

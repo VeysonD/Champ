@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class EditPost extends Component {
+class PostBoard extends Component {
   render() {
     return (
       <div>
-        Edit me!
+        This is the PostBoard component
       </div>
     )
   }
 };
 
-export default EditPost;
+export default PostBoard;
