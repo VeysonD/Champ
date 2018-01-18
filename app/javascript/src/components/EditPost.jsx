@@ -17,7 +17,7 @@ class EditPost extends Component {
     this.state = {
       title: '',
       body: '',
-      published: '',
+      factorial: 0,
       checked: false
     };
 
@@ -28,11 +28,23 @@ class EditPost extends Component {
   }
 
   componentWillMount() {
-    console.log('What are the props:', this.props);
+    axios.get(`/api/posts/${this.props.match.params.id}`)
+      .then((post) => {
+        console.log('Setting state in Edit:', this.state);
+        this.setState({
+          title: post.data.title,
+          body: post.data.body,
+          factorial: post.data.factorial,
+          checked: post.data.published,
+        });
+        console.log('Setting state in Edit 2:', this.state);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   handleTitleChange(event) {
-    console.log('what is the state:', this.state);
     this.setState({
       title: event.target.value
     });
@@ -45,7 +57,6 @@ class EditPost extends Component {
   }
 
   updateCheck() {
-    console.log('Checkmark is working');
     const oldState = this.state.checked;
     this.setState({
       checked: !oldState
@@ -53,7 +64,16 @@ class EditPost extends Component {
   }
 
   submitPost() {
-    console.log('We submitting now');
+    axios.put(`/api/posts/${this.props.match.params.id}`, {
+      title: this.state.title,
+      body: this.state.body,
+      published: this.state.checked
+    }).then((post) => {
+      console.log('What is the submitted post:', post);
+    }).catch((err) => {
+      console.error(err);
+    });
+    window.location.href="/"
   }
 
   render() {
@@ -75,6 +95,7 @@ class EditPost extends Component {
             >
               <TextField
                 id="title"
+                required={ true }
                 floatingLabelText="Title"
                 value={ this.state.title }
                 onChange={ this.handleTitleChange }

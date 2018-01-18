@@ -17,7 +17,6 @@ class NewPost extends Component {
     this.state = {
       title: '',
       body: '',
-      published: '',
       checked: false
     };
 
@@ -28,7 +27,6 @@ class NewPost extends Component {
   }
 
   handleTitleChange(event) {
-    console.log('what is the state:', this.state);
     this.setState({
       title: event.target.value
     });
@@ -41,7 +39,6 @@ class NewPost extends Component {
   }
 
   updateCheck() {
-    console.log('Checkmark is working');
     const oldState = this.state.checked;
     this.setState({
       checked: !oldState
@@ -49,7 +46,17 @@ class NewPost extends Component {
   }
 
   submitPost() {
-    console.log('We submitting now');
+    axios.post('/api/posts', {
+      title: this.state.title,
+      body: this.state.body,
+      published: this.state.checked,
+      factorial: 0
+    }).then((post) => {
+      console.log('What is the submitted post:', post);
+    }).catch((err) => {
+      console.error(err);
+    })
+      window.location.href="/"
   }
 
   render() {
@@ -71,6 +78,7 @@ class NewPost extends Component {
             >
               <TextField
                 id="title"
+                required={ true }
                 floatingLabelText="Title"
                 value={ this.state.title }
                 onChange={ this.handleTitleChange }
