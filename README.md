@@ -6,8 +6,9 @@ This is a hiring test for potential Stukent employees who are interested in work
 
 1. [The Challenge](#the-challenge)
 1. [Challenge Submission](#challenge-submission)
-1. [Rails Frontend Setup](#rails-frontend-setup)
-1. [React Frontend Setup](#react-frontend-setup)
+1. [Setup](#setup)
+    1. [Rails Frontend Setup](#rails-frontend-setup)
+    1. [React Frontend Setup](#react-frontend-setup)
 1. [Screenshots](#screenshots)
 1. [Reflection](#reflection)
 
@@ -31,7 +32,12 @@ To submit your completed challenge, please perform the following:
   1. Zip up the champ directory into `[YOUR NAME]_champ_challenge.zip`.
   1. Email your zip file or send a download link to `turbo@stukent.com`
 
-## Rails Frontend Setup
+## Setup
+
+> __NOTE__ The Rails Frontend branch is completely different from the React Frontend branch.  Make sure to checkout the correct branch that you want to run.  The Rails Frontend branch was completed much earlier in the project while the React Frontend branch completely tosses most of that code out and implements the Rails frontend code into JavaScript.  While the two branches are very different in code and styling, their main functionality is the same.
+
+
+### Rails Frontend Setup
 
 1. Checkout the rails-frontend branch or go to https://github.com/VeysonD/Champ/tree/rails-frontend and clone the repo
 ```sh
@@ -48,7 +54,7 @@ rails s
 4. Navigate to http://localhost:3000 in your web browser
 5. Enjoy!
 
-## React Frontend Setup
+### React Frontend Setup
 
 1. Checkout the master branch or go to https://github.com/VeysonD/Champ and clone the repo
 ```sh
