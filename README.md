@@ -63,7 +63,7 @@ From the very beginning my Mac was out of commission so I had to make do with de
 
 Most of issues that halted my progress stemmed from trouble shooting errors that were specific for Windows.
 
-For instance, webpacker and webpacker react would not install no matter how many times I tried from a my own fork or even a fresh "hello rails" app I made to troubleshoot issues.
+For instance, webpacker and webpacker react would not install no matter how many times I tried from my own fork or even a fresh "hello rails" app I made to troubleshoot issues.
 
 - Solution: I had to change the webpacker gem in the Gemfile to specifically point to the weppacker github repo in order to get the installation commands working.
 
