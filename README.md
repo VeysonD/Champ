@@ -2,6 +2,14 @@
 
 This is a hiring test for potential Stukent employees who are interested in working on our Ruby on Rails projects. The challenge is designed to see how well the candidate can learn new things in Rails and configure it to be used with a Single Page Application (SPA). This is a Rails 5.1 application. In order to complete the challenge you will need to use `ruby 2.4.1` and `yarn`. If you use rvm, the `.ruby-version` and `.ruby-gemeset` files are already created for you.
 
+## Table of Contents
+
+1. [The Challenge](#the-challenge)
+1. [Challenge Submission](#challenge-submission)
+1. [Setup](#setup)
+1. [Screenshots](#screenshots)
+1. [Reflection](#reflection)
+
 ## The Challenge
 The candidate will complete the outlined steps below. For each step there should be at least 1 git commit so that the history of the application can be viewed at each step. If you cannot complete the step, create a commit message for that step and explain where you got stuck and why in the commit message. Then proceed to the next step.
 
@@ -22,3 +30,54 @@ To submit your completed challenge, please perform the following:
   1. Zip up the champ directory into `[YOUR NAME]_champ_challenge.zip`.
   1. Email your zip file or send a download link to `turbo@stukent.com`
 
+## Setup
+
+1. Install dependencies from the root of the repo by running
+```sh
+bundle install
+yarn install
+```
+2. Run the webpack dev server
+```sh
+webpack-dev-server
+```
+3. Run the rails server
+```sh
+rails s
+```
+4. Navigate to http://localhost:3000
+5. Enjoy!
+
+## Screenshots
+[Champ](https://ibb.co/niZUZ6)
+[Show Post](https://ibb.co/dwZ7Mm)
+[Write New Post](https://ibb.co/bsLQ7R)
+[Delete Post](https://ibb.co/hwXGE6)
+
+## Reflection
+
+From the very beginning my Mac was out of commission so I had to make do with developing on my Windows machine.
+
+Most of issues that halted my progress stemmed from trouble shooting errors that were specific for Windows.
+
+For instance, webpacker and webpacker react would not install no matter how many times I tried from a my own fork or even a fresh "hello rails" app I made to troubleshoot issues.
+
+- Solution: I had to change the webpacker gem in the Gemfile to specifically point to the weppacker github repo in order to get the installation commands working.
+
+Another trial was migrating databases with PostgreSQL.  Every time I tried to use the commands I ran into errors that stemmed from PostgreSQL trying to use my Windows username as a login.
+
+- Solution:  I found a "hack-y" solution to it without using migrations and moved on.
+
+In the beginning I also had trouble running rails at all as I had previously installed a different version of Ruby on this computer some time ago.  I installed Rails (which came with an older version of Ruby) and things seemed to work fine at first but when I turned off my computer for the night and logged on the next day to work nothing worked at all anymore.
+
+- Solution: Uninstall both versions of Ruby and Rails and reinstall just the Rails package.
+
+Webpack dev server would never fully shut off after pushing "ctrl + c" and would still bundle up all my files even when it should have been quiet.
+
+- Solution: Go to the Windows Task Manager and kill the Node servers that Webpack refused to close.
+
+Those were the main issues I had with Windows.  The other issues were merely regular debugging and quality of life changes to help speed things up and keeping it looking nice (I really like Material UI).
+
+If I had more time with the project I would have loved to add Redux to speed up the application even more, write tests with Jests and Respec, deploy to AWS, add users and authentication, and possibly move the whole backend to Node.js.
+
+- Solution: Build a time machine.
