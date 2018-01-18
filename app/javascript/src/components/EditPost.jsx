@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
-
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import { Card, CardTitle } from 'material-ui/Card';
+
+import { factorial } from '../helpers/factorial';
 
 
 class EditPost extends Component {
@@ -62,10 +64,13 @@ class EditPost extends Component {
   }
 
   submitPost() {
+    const number = factorial();
+    
     axios.put(`/api/posts/${this.props.match.params.id}`, {
       title: this.state.title,
       body: this.state.body,
-      published: this.state.checked
+      published: this.state.checked,
+      factorial: number
     }).then((post) => {
       console.log('What is the submitted post:', post);
     }).catch((err) => {
