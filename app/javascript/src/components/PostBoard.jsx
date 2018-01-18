@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -107,23 +108,25 @@ class PostBoard extends Component {
                       <TableRowColumn>{post.body}</TableRowColumn>
                       { post.published
                         ?
-                        <TableRowColumn>True</TableRowColumn>
+                        <TableRowColumn>Yes</TableRowColumn>
                         :
-                        <TableRowColumn>False</TableRowColumn>
+                        <TableRowColumn>No</TableRowColumn>
                       }
                       <TableRowColumn>
-                        <RaisedButton
-                          secondary
-                          label="Show"
-                          href={`/posts/${post.id}`}
-                        />
+                        <Link to={`/posts/${post.id}`}>
+                          <RaisedButton
+                            secondary
+                            label="Show"
+                          />
+                        </Link>
                       </TableRowColumn>
                       <TableRowColumn>
-                        <RaisedButton
-                          secondary
-                          label="Edit"
-                          href={`/posts/${post.id}/edit`}
-                        />
+                        <Link to={`/posts/${post.id}/edit`}>
+                          <RaisedButton
+                            secondary
+                            label="Edit"
+                          />
+                        </Link>
                       </TableRowColumn>
                       <TableRowColumn>
                         <RaisedButton
@@ -148,13 +151,14 @@ class PostBoard extends Component {
             onRequestClose={this.closeConfirmationBox}
           >Are you sure you want to delete this post?
           </Dialog>
-          <RaisedButton
-            primary
-            label="Write a new post"
-            href="/posts/new"
-          />
-        </Paper>
+          <Link to="posts/new">
+            <RaisedButton
+              primary
+              label="Write a new post"
+            />
+          </Link>
 
+        </Paper>
       </MuiThemeProvider>
     )
   }
