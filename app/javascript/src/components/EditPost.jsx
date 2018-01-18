@@ -30,14 +30,12 @@ class EditPost extends Component {
   componentWillMount() {
     axios.get(`/api/posts/${this.props.match.params.id}`)
       .then((post) => {
-        console.log('Setting state in Edit:', this.state);
         this.setState({
           title: post.data.title,
           body: post.data.body,
           factorial: post.data.factorial,
           checked: post.data.published,
         });
-        console.log('Setting state in Edit 2:', this.state);
       })
       .catch((err) => {
         console.error(err);

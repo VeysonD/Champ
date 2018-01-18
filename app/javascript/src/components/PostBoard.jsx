@@ -28,12 +28,13 @@ class PostBoard extends Component {
     };
     this.closeConfirmationBox = this.closeConfirmationBox.bind(this);
   }
+
   componentWillMount() {
-    axios.get('/api/posts').then(posts => {
-      this.setState({ allPosts: posts.data })
+    this.setState({
+      allPosts: this.props.allPosts
     })
-    .catch(error => console.error(error));
   }
+
   openConfirmationBox(id) {
    console.log('Open Confirmationbox post id:', this.state);
     this.setState({
@@ -41,6 +42,7 @@ class PostBoard extends Component {
       currentPost: id
     });
   }
+
   closeConfirmationBox() {
     this.setState ({
       open: false,
