@@ -6,7 +6,8 @@ This is a hiring test for potential Stukent employees who are interested in work
 
 1. [The Challenge](#the-challenge)
 1. [Challenge Submission](#challenge-submission)
-1. [Setup](#setup)
+1. [Rails Frontend Setup](#rails-frontend-setup)
+1. [React Frontend Setup](#react-frontend-setup)
 1. [Screenshots](#screenshots)
 1. [Reflection](#reflection)
 
@@ -30,23 +31,44 @@ To submit your completed challenge, please perform the following:
   1. Zip up the champ directory into `[YOUR NAME]_champ_challenge.zip`.
   1. Email your zip file or send a download link to `turbo@stukent.com`
 
-## Setup
+## Rails Frontend Setup
 
-1. Install dependencies from the root of the repo by running
+1. Checkout the rails-frontend branch or go to https://github.com/VeysonD/Champ/tree/rails-frontend and clone the repo
+```sh
+git clone https://github.com/VeysonD/Champ.git
+```
+2. Install dependencies from the root of the repo
 ```sh
 bundle install
-yarn install
-```
-2. Run the webpack dev server
-```sh
-webpack-dev-server
 ```
 3. Run the rails server
 ```sh
 rails s
 ```
-4. Navigate to http://localhost:3000
+4. Navigate to http://localhost:3000 in your web browser
 5. Enjoy!
+
+## React Frontend Setup
+
+1. Checkout the master branch or go to https://github.com/VeysonD/Champ and clone the repo
+```sh
+git clone https://github.com/VeysonD/Champ.git
+```
+2. Install dependencies from the root of the repo
+```sh
+bundle install
+yarn install
+```
+3. Run the webpack dev server
+```sh
+webpack-dev-server
+```
+4. Run the rails server
+```sh
+rails s
+```
+5. Navigate to http://localhost:3000 in your web browser
+6. Enjoy!
 
 ## Screenshots
 [Champ](https://ibb.co/niZUZ6)
