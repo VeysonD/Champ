@@ -4,7 +4,6 @@ import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -120,7 +119,7 @@ class NewPost extends Component {
           </Link>
           <RaisedButton
             secondary
-            label="SubmitPost"
+            label="Submit New Post"
             onClick={ this.submitPost }
           />
         </Paper>

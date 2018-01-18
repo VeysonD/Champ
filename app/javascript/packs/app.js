@@ -20,7 +20,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={ PostBoard } />
             <Route path="/posts/new" component={ NewPost } />
-            <Route path="/posts/:id" component={ Post } />
+            <Route exact path="/posts/:id" component={ Post } />
             <Route path="/posts/:id/edit" component={ EditPost } />
           </Switch>
         </div>
