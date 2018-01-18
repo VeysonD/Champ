@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Subheader from 'material-ui/Subheader';
 
@@ -44,7 +44,7 @@ export default class App extends Component {
             </Switch>
           </div>
           :
-          <Subheader>There are no posts currently</Subheader>
+          <Subheader>Please wait while Champ loads</Subheader>
         }
         </BrowserRouter>
       </MuiThemeProvider>

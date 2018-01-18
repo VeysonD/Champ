@@ -26,17 +26,19 @@ class PostBoard extends Component {
       open: false,
       currentPost: null,
     };
+
     this.closeConfirmationBox = this.closeConfirmationBox.bind(this);
+    this.openConfirmationBox = this.openConfirmationBox.bind(this);
+    this.destroyPost = this.destroyPost.bind(this);
   }
 
   componentWillMount() {
     this.setState({
       allPosts: this.props.allPosts
-    })
+    });
   }
 
   openConfirmationBox(id) {
-   console.log('Open Confirmationbox post id:', this.state);
     this.setState({
       open: true,
       currentPost: id
@@ -51,8 +53,6 @@ class PostBoard extends Component {
   }
 
   destroyPost() {
-    console.log('Destroying post id:', this.state.currentPost);
-
     axios.delete(`/api/posts/${this.state.currentPost}`)
       .then(post => {
         axios.get('/api/posts').then(posts => {
@@ -141,7 +141,7 @@ class PostBoard extends Component {
                   ))}
                 </TableBody>
                 :
-                <TableBody stripedRows displayRowCheckbox={false}>
+                <TableBody stripedRows displayRowCheckbox={ false }>
                 </TableBody>
               }
             </Table>
