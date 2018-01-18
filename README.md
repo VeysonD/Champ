@@ -50,8 +50,11 @@ rails s
 
 ## Screenshots
 [Champ](https://ibb.co/niZUZ6)
+
 [Show Post](https://ibb.co/dwZ7Mm)
+
 [Write New Post](https://ibb.co/bsLQ7R)
+
 [Delete Post](https://ibb.co/hwXGE6)
 
 ## Reflection
