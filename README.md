@@ -93,7 +93,11 @@ Most of issues that halted my progress stemmed from trouble shooting errors that
 
 For instance, webpacker and webpacker react would not install no matter how many times I tried from my own fork or even a fresh "hello rails" app I made to troubleshoot issues.
 
-- Solution: I had to change the webpacker gem in the Gemfile to specifically point to the weppacker github repo in order to get the installation commands working.
+- Solution: I had to change the webpacker gem in the Gemfile to specifically point to the webpacker github repo in order to get the installation commands working.
+
+After getting the installation commands finally working webpack-dev-server still would not work due to node-sass breaking everything specifically for the version of Node I had (the latest one).
+
+- Solution: Update the node-sass dependency in package.json from 4.5.2 to 4.6.0
 
 Another trial was migrating databases with PostgreSQL.  Every time I tried to use the commands I ran into errors that stemmed from PostgreSQL trying to use my Windows username as a login.
 
